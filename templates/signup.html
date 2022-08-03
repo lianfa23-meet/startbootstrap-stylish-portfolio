@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Signup</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Simple line icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">IASA</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+                <li class="sidebar-nav-item"><a href="#about">About</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <form action='/signup' method='post'>
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">ahhahah</h3>
+                    <h2 class="mb-5">Signup</h2>
+                </div>
+                <div class="row gx-0">
+                    <div class='col-lg-3'></div>
+                    <div class="col-lg-6">
+                        <div class="form-floating mb-3">
+                        <input class="form-control" id="email" name='email' type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                        <label for="email">Email address</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    </div>
+                    <div class='col-lg-3'></div>
+                </div>
+                <div class="row gx-0">
+                    <div class='col-lg-3'></div>
+                    <div class="col-lg-6">
+                        <div class="form-floating mb-3">
+                        <input class="form-control" id="name" name='name' type="text" placeholder="Full Name" data-sb-validations="required,email" />
+                        <label for="name">Full Name</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">Please write your full name.</div>
+                    </div>
+                    </div>
+                    <div class='col-lg-3'></div>
+                </div>
+                    <div class="row gx-0">
+                    <div class='col-lg-3'></div>
+                    <div class="col-lg-6">
+                        
+                        <div class="form-floating mb-3">
+                        <input class="form-control" name = 'password' id="password" type="password" placeholder="password"/>
+                        <label for="password">Password</label>
+                        <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="password:length">Password has to be more than 8 characters long.</div>
+                    </div>
+
+                    <div class='col-lg-3'></div>
+
+                    </div>
+                </div>
+                <div class="row gx-0">
+                    <div class='col-lg-3'></div>
+                    <div class="col-lg-6">
+                        
+                        <div class="form-floating mb-3">
+                        <input class="form-control" id="confirmPassword" name='confirmPassword' type="password" placeholder=" confirm password"/>
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="invalid-feedback" data-sb-feedback="confirm:required">A password is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="confirm:wrong">Password has to be more than 8 characters long.</div>
+                    </div>
+
+                    <div class='col-lg-3'></div>
+
+                    </div>
+                </div>
+                <div class="row gx-0">
+                    <div class='col-lg-3'></div>
+                    <div class="col-lg-6">
+                        <button type='submit' class='btn btn-primary w-100 h-100' >Submit</button>
+                    </div>
+
+                    <div class='col-lg-3'></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../static/js/scripts.js"></script>
+    </body>
+</html>
