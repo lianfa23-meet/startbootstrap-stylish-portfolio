@@ -24,13 +24,15 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'iasa2000'
 ###################################
 
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
-	if request.method == 'POST':
-		#login thing
-		error=''
-	else:
-		return render_template('index.html')
+  try:
+    acc_type = db.child('Users').child(login_session['user']['localId']).get().val()
+    acc_type = acc_type['account-type']
+  except:
+    acc_type = '0'
+  return render_template('index.html', acc_type=acc_type)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -38,7 +40,7 @@ def signup():
   if request.method=='POST':
     if request.form['password']==request.form['confirmPassword']:
       try:
-        user = {'name': request.form['name'], 'account-type': 1}
+        user = {'name': request.form['name'], 'account_type': 1}
         login_session['user'] = auth.create_user_with_email_and_password(request.form['email'], request.form['password'])
         db.child('Users').child(login_session['user']['localId']).set(user)
         return render_template('add-review.html')
@@ -72,7 +74,7 @@ def login():
 def logout():
   login_session['user'] = None
   auth.current_user = None
-  return redirect(url_for('signin'))
+  return redirect(url_for('home'))
 
 @app.route('/post-review', methods=['GET', 'POST'])
 def post_review():
@@ -84,19 +86,20 @@ def post_review():
     else:
       thing = request.form['title']
       name = 'food/'+thing
-    picture = request.files['image']
-    firebase.storage().child(name).put(picture)
-    url = firebase.storage().child(name).get_url(None)
-
-    post = {'title': request.form['title'], 'text':request.form['review'], 'url':url, 'type':request.form['type']}
+    
     try:
+      picture = request.files['image']
+      firebase.storage().child(name).put(picture)
+      url = firebase.storage().child(name).get_url(None)
+
+      post = {'title': request.form['title'], 'text':request.form['review'], 'url':url, 'type':request.form['type']}
       if request.form['type'] == '1':
         db.child('RoomsRev').push(post)
       else:
         db.child('FoodRev').push(post)
       roomposts = db.child('RoomsRev').get().val()
       foodposts = db.child('FoodRev').get().val()
-      return render_template('reviews.html', roomposts=roomposts, foodposts=foodposts, post=post)
+      return render_template('reviews.html', room_reviews=roomposts, food_reviews=foodposts)
 
     except:
       error='authentication error'
@@ -107,11 +110,51 @@ def post_review():
 
 @app.route('/menu')
 def menu():
-  return render_template('menu.html')
+  try:
+    food = db.child('Menu').get().val()
+    try:
+      user = db.child('Users').child(login_session['user']['localId']).get().val()
+      name=user['name']
+      acc_type = user['account-type']
+      return render_template('menu.html', food=food, acc_type=acc_type, name=name)
+    except:
+      acc_type='0'
+      return render_template('menu.html', food=food, acc_type=acc_type)
+  except:
+    error=''
+    return render_template('index.html')
 
 @app.route('/reviews')
 def reviews():
-  return render_template('reviews.html')
+  try:
+    roomposts = db.child('RoomsRev').get().val()
+    foodposts = db.child('FoodRev').get().val()
+    try:
+      user = db.child('Users').child(login_session['user']['localId']).get().val()
+      acc_type = user['account-type']
+      name=user['name']
+    except:
+      acc_type = '0'
+      
+    return render_template('reviews.html', room_reviews = roomposts, food_reviews=foodposts, acc_type=acc_type)
+  except:
+    return redirect(url_for('home'))
+@app.route('/menu-add', methods=['GET', 'POST'])
+def menu_add():
+  if request.method=='POST':
+    try:
+      name = 'menu/'+request.form['title']
+      picture = request.files['image']
+      firebase.storage().child(name).put(picture)
+      url = firebase.storage().child(name).get_url(None)
+      food = {'title': request.form['title'], 'description': request.form['text'], 'url': url}
+      db.child('Menu').push(food)
+      return redirect(url_for('menu'))
+    except:
+      error=''
+      return render_template('menu-add.html')
+  else:
+    return render_template('menu-add.html')
 ###################################
 if __name__ == '__main__':
     app.run(debug=True)

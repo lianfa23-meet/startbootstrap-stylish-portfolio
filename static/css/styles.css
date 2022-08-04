@@ -11422,7 +11422,7 @@ html {
 
 .callout {
   padding: 15rem 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../src/assets/img/bg-callout.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/laugh.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11501,6 +11501,7 @@ footer.footer .social-link:hover {
   position: relative;
   overflow: hidden;
   max-width: 530px;
+
   margin: auto auto 1rem;
 }
 .portfolio-item .caption {
@@ -11580,3 +11581,4 @@ footer.footer .social-link:hover {
   font-weight: 400;
   line-height: 1.5;
 }
+

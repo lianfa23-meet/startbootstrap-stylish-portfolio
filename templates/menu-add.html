@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login</title>
+        <title>Add Review</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -18,23 +18,34 @@
         <link href="../static/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        
-        <form action='/login' method='post'>
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+                <li class="sidebar-nav-item"><a href="#about">About</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <form action='/menu-add' method='post' enctype="multipart/form-data">
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0"><a href='/signup'>signup</a></h3>
-                    <h2 class="mb-5">Login</h2>
+                    <h3 class="text-secondary mb-0">add meal</h3>
+                    <h2 class="mb-5">Menu</h2>
                 </div>
                 <div class="row gx-0">
                     <div class='col-lg-3'></div>
                     <div class="col-lg-6">
                         <div class="form-floating mb-3">
-                        <input class="form-control" id="email" name='email' type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                        <label for="email">Email address</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        <input class="form-control" id="title" name='title' type="text" placeholder="IASA rice" />
+                        <label for="title">Title</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">A title is required.</div>
                     </div>
+
 
 
                     </div>
@@ -44,11 +55,10 @@
                     <div class='col-lg-3'></div>
                     <div class="col-lg-6">
                         
-                        <div class="form-floating mb-3">
-                        <input class="form-control" id="password" type="password" name='password' placeholder="password"/>
-                        <label for="password">Password</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">A password is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Password has to be more than 8 characters long.</div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="review" type="text" name='text' placeholder="Enter your Review here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                        <label for="review">description</label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Feedback is required.</div>
                     </div>
 
                     <div class='col-lg-3'></div>
@@ -57,19 +67,28 @@
                     <div class="row gx-0">
                     <div class='col-lg-3'></div>
                     <div class="col-lg-6">
-                        
-                        <div class="form-floating mb-3">
-                        <button class='btn btn-primary w-100' type='submit'>Submit</button>
+                    
+                        Upload Image
+                        <input type='file' class='form-control' id='image' name='image' placeholder='image'/></div>
+
+                    <div class='col-lg-3'></div>
                     </div>
+                    <div class="row gx-0 mt-3">
+                    <div class='col-lg-3'></div>
+                    
+                    <div class="col-lg-6">
+                        
+                    <div class="form-floating mb-3">
+                        <button type='submit' class='btn btn-primary w-100 h-100 form-btn'>Submit</button>
+                    </div></div>
 
                     <div class='col-lg-3'></div>
 
                     </div>
-                </div>
+
             </div>
-        </div>
         </section>
-</form>
+    </form>
 
         <footer class="footer text-center">
             <div class="container px-4 px-lg-5">

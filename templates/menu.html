@@ -23,19 +23,21 @@
 	<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
-                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">About</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <li class="sidebar-brand"><a href="/">IASA</a></li>
+                <li class="sidebar-nav-item"><a href="/">Home</a></li>
+                <li class="sidebar-nav-item"><a href="/reviews">Reviews</a></li>
+                <li class="sidebar-nav-item"><a href="/menu">Menu</a></li>
+
+                {% if acc_type == '2' %}
+                <li class="sidebar-nav-item"><a href="/menu-add">Add Food</a></li>
+                {% endif %}
             </ul>
         </nav>
 	<section class="callout">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mx-auto mb-5">
                     Welcome to the
-                    <em>IASA</em>
+                    <em>IASA</em> restaurant
                     menu!
                 </h2>
                 <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
@@ -45,54 +47,23 @@
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Portfolio</h3>
-                    <h2 class="mb-5">Recent Projects</h2>
+                    <h3 class="text-secondary mb-0">See reviews</h3>
+                    <h2 class="mb-5">Menu</h2>
                 </div>
                 <div class="row gx-0">
+                	{% for meal in food %}
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                                    <div class="h2">{{food[meal]['title']}}</div>
+                                    <p class="mb-0">{{food[meal]['description']}}</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="../static/assets/img/portfolio-1.jpg" alt="..." />
+                            <img class="img-fluid" src="{{food[meal]['url']}}" alt="..." width='700' height ='467'/>
                         </a>
                     </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="../static/assets/img/portfolio-2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="../static/assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="../static/assets/img/portfolio-4.jpg" alt="..." />
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
